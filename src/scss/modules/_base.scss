@@ -1,0 +1,21 @@
+@import "../partials/colors";
+@import "../partials/typography";
+
+.App{
+  display: grid;
+  grid-template-rows: auto 1fr;
+  height: 100vh;
+}
+
+.btn {
+  background-color: $light-gray;
+  cursor: pointer;
+  border: 1px solid $blue;
+  border-radius: 5px;
+  padding: 0.3rem 1rem;
+
+  &-danger {
+    background-color: $alert-red;
+    border: none;
+  }
+}

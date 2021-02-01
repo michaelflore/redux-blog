@@ -1,0 +1,58 @@
+@import "../partials/colors";
+@import "../partials/typography";
+
+.form-container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background-color: $gray;
+
+  .form-inner {
+    background-color: $white;
+    padding: 2rem;
+    border-radius: 10px;
+    width: 17rem;
+
+    h2 {
+      text-align: center;
+    }
+
+    .form-group {
+      display: flex;
+      justify-content: center;
+      margin: 1rem 0;
+      font-family: $sans-serif;
+
+      input[type=text] {
+        background-color: $gray;
+        outline: none;
+        border: 1px solid transparent;
+        border-radius: 20px;
+        padding: 1rem;
+
+        &:focus {
+          border: 1px solid $pink;
+        }
+      }
+
+      button[type=submit] {
+        background-color: darken($green, 30%);
+        color: $white;
+        border-radius: 50px;
+        border: none;
+        padding: 1rem 1.5rem;
+        cursor: pointer;
+      }
+    }
+
+    .content-label {
+      padding: 1rem 0;
+    }
+
+    .form-group:nth-child(1), .form-group:nth-child(2) {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+    }
+  }
+}
