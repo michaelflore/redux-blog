@@ -1,6 +1,8 @@
 import React from 'react';
 import { Link } from "react-router-dom";
 
+import firebase from "./../firebase";
+
 function Header(props) {
     return (
         <header className="App-header">
@@ -14,7 +16,13 @@ function Header(props) {
                     props.isAuthenticated ? (
                         <div>
                             <li className="list-item">
+                                <Link to="/" className="App-link">Home</Link>
+                            </li>
+                            <li className="list-item">
                                 <Link to="/new" className="App-link">New Post</Link>
+                            </li>
+                            <li className="list-item">
+                                <Link to={"/myPosts/" + firebase.auth().currentUser.uid} className="App-link">My Posts</Link>
                             </li>
                             <li className="list-item">
                                 <button onClick={ e => {

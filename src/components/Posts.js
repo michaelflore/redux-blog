@@ -2,6 +2,7 @@ import React from 'react';
 import {Link} from "react-router-dom";
 import logo from "../logo.svg";
 import Message from "./Message";
+import firebase from "./../firebase"
 
 function Posts(props) {
 
@@ -25,7 +26,7 @@ function Posts(props) {
                                         <Link to={`/post/${post.slug}`} className="posts-link">{post.title}</Link>
                                     </h2>
                                     {
-                                        props.isAuthenticated && (
+                                        props.isAuthenticated && firebase.auth().currentUser.uid === post.user && (
                                             <p>
                                                 <Link to={`/edit/${post.slug}`} className="App-link">Edit Post</Link>
                                                 {" | "}

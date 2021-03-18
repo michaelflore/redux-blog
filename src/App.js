@@ -1,6 +1,6 @@
 import React, {Component} from 'react';
 import {BrowserRouter as Router, Switch, Route, Redirect} from "react-router-dom";
-import SimpleStorage from "react-simple-storage";
+
 import "./scss/App.scss"; //SASS
 import Header from "./components/Header";
 import Posts from "./components/Posts";
@@ -9,6 +9,9 @@ import PostForm from "./components/PostForm";
 import NotFound from "./components/NotFound";
 import Login from "./components/Login";
 import Register from "./components/Register";
+import MyPosts from "./components/MyPosts";
+
+import firebase from "./firebase";
 
 import appService from "./appService";
 
@@ -40,7 +43,11 @@ class App extends Component {
     onRegister = (email, password) => {
         console.log(email, password);
         appService.register(email, password)
-            .then(user => alert("You can now login!"))
+            .then(data => {
+                firebase.database().ref(`users/${data.user.uid}`).push({
+                    id: data.user.uid
+                })
+            })
             .catch(err => console.error(err));
     }
 
@@ -83,7 +90,7 @@ class App extends Component {
         return (
             <Router>
                 <div className="App">
-                    <SimpleStorage parent={this} />
+
                     <Header isAuthenticated={this.state.isAuthenticated} onLogout={this.onLogout}/>
 
                     <Switch>
@@ -95,6 +102,8 @@ class App extends Component {
                             />
                             )}
                         />
+
+                        <Route path="/myPosts/:userId" component={MyPosts} />
 
                         <Route path="/post/:postSlug"
                             render={props => {

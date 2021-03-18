@@ -17,6 +17,7 @@
     @extend %display-center;
     flex-direction: column;
     background-color: $tan;
+    padding: 1rem;
 
     //The individual post itself
     .post-content {

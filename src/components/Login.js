@@ -1,4 +1,5 @@
 import React, {Component} from 'react';
+import {Redirect} from "react-router-dom";
 
 class Login extends Component {
     state = {
@@ -24,7 +25,7 @@ class Login extends Component {
                         </div>
                         <div className="form-group">
                             <label htmlFor="password">Password: </label>
-                            <input type="text" name="password" onChange={e => this.setState({ password: e.target.value })}
+                            <input type="password" name="password" onChange={e => this.setState({ password: e.target.value })}
                                    placeholder="Password..." required={true}/>
                         </div>
                         <div className="form-group">
